@@ -43,14 +43,13 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 import fs from 'fs';
 
 app.get('*', (req, res) => {
-  const filePath = path.join(__dirname, '..', 'public', req.path);
+  const requestedPath = path.normalize(req.path).replace(/^(\.\.[\/\\])+/, '');
+  const filePath = path.join(__dirname, '..', 'public', requestedPath);
 
-  fs.stat(filePath, (err, stat) => {
-    if (err || !stat.isFile()) {
-      return res.status(404).send('Not Found');
+  res.sendFile(filePath, (err) => {
+    if (err) {
+      res.status(404).send('Not Found');
     }
-
-    res.sendFile(filePath);
   });
 });
 
