@@ -39,6 +39,16 @@ app.use('/v1/convai', (req, res) => {
 // Serve arquivos estáticos (ex: ai.js)
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
+// Serve qualquer arquivo estático solicitado diretamente da pasta public
+app.get('*', (req, res, next) => {
+  const filePath = path.join(__dirname, '..', 'public', req.path);
+  res.sendFile(filePath, err => {
+    if (err) {
+      next();
+    }
+  });
+});
+
 // WebSocket proxy
 attachWebSocketProxy(server);
 
