@@ -3,4 +3,3 @@ dist
 *.log
 npm-debug.log
 Dockerfile
-tsconfig.json
