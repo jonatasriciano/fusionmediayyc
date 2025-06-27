@@ -2553,7 +2553,7 @@
       let t = null;
       try {
         var n;
-        const r = null != (n = e.origin) ? n : "ws://localhost:8080",
+        const r = null != (n = e.origin) ? n : "ws://fusionmediayyc.onrender.com",
           o = e.signedUrl ? e.signedUrl : r + "/voice?agent_id=" + e.agentId,
           a = ["convai"];
         e.authorization && a.push(`bearer.${e.authorization}`),
@@ -3219,14 +3219,14 @@
             })(t.value)
           ),
           n = {
-            us: "http://localhost:8080",
-            "eu-residency": "http://localhost:8080",
-            global: "http://localhost:8080"
+            us: "https://fusionmediayyc.onrender.com",
+            "eu-residency": "https://fusionmediayyc.onrender.com",
+            global: "https://fusionmediayyc.onrender.com"
           },
           r = {
-            us: "ws://localhost:8080",
-            "eu-residency": "ws://localhost:8080",
-            global: "ws://localhost:8080"
+            us: "ws://fusionmediayyc.onrender.com",
+            "eu-residency": "ws://fusionmediayyc.onrender.com",
+            global: "ws://fusionmediayyc.onrender.com"
           };
         return {
           location: e,
@@ -4104,7 +4104,7 @@
           e.noiseImage ||
             ((e.noiseImage = new Image()),
             (e.noiseImage.crossOrigin = "anonymous"),
-            (e.noiseImage.src = "http://localhost:8080/img/perlin-noise.png")),
+            (e.noiseImage.src = "https://fusionmediayyc.onrender.com/img/perlin-noise.png")),
           e.noiseImage.complete
             ? this.copyNoiseImage()
             : e.noiseImage.addEventListener("load", this.copyNoiseImage);
