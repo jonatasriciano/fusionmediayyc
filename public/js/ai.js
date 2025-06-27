@@ -2553,7 +2553,7 @@
       let t = null;
       try {
         var n;
-        const r = null != (n = e.origin) ? n : "ws://fusionmediayyc.onrender.com",
+        const r = null != (n = e.origin) ? n : "wss://fusionmediayyc.onrender.com",
           o = e.signedUrl ? e.signedUrl : r + "/voice?agent_id=" + e.agentId,
           a = ["convai"];
         e.authorization && a.push(`bearer.${e.authorization}`),
@@ -3224,9 +3224,9 @@
             global: "https://fusionmediayyc.onrender.com"
           },
           r = {
-            us: "ws://fusionmediayyc.onrender.com",
-            "eu-residency": "ws://fusionmediayyc.onrender.com",
-            global: "ws://fusionmediayyc.onrender.com"
+            us: "wss://fusionmediayyc.onrender.com",
+            "eu-residency": "wss://fusionmediayyc.onrender.com",
+            global: "wss://fusionmediayyc.onrender.com"
           };
         return {
           location: e,
