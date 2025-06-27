@@ -42,15 +42,15 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 // Serve qualquer arquivo estático solicitado diretamente da pasta public
 import fs from 'fs';
 
-app.get('*', (req, res) => {
-  const requestedPath = path.normalize(req.path).replace(/^(\.\.[\/\\])+/, '');
-  const filePath = path.join(__dirname, '..', 'public', requestedPath);
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
-  res.sendFile(filePath, (err) => {
-    if (err) {
-      res.status(404).send('Not Found');
-    }
-  });
+app.use((req, res, next) => {
+  const filePath = path.join(__dirname, '..', 'public', req.path);
+  if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+    res.sendFile(filePath);
+  } else {
+    res.status(404).send('Not Found');
+  }
 });
 
 // WebSocket proxy
