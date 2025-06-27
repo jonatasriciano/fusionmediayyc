@@ -8691,6 +8691,7 @@
       className: $n("rounded-full object-cover", cc[e], n),
       src: `https://storage.googleapis.com/eleven-public-cdn/images/flags/circle-flags/${t}.svg`,
       alt: `${t.toUpperCase()} flag`,
+      backgroundColor: "white",
       ...r
     });
   }
