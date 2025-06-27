@@ -40,12 +40,17 @@ app.use('/v1/convai', (req, res) => {
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Serve qualquer arquivo estático solicitado diretamente da pasta public
-app.get('*', (req, res, next) => {
+import fs from 'fs';
+
+app.get('*', (req, res) => {
   const filePath = path.join(__dirname, '..', 'public', req.path);
-  res.sendFile(filePath, err => {
-    if (err) {
-      next();
+
+  fs.stat(filePath, (err, stat) => {
+    if (err || !stat.isFile()) {
+      return res.status(404).send('Not Found');
     }
+
+    res.sendFile(filePath);
   });
 });
 
